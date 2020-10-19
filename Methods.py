@@ -18,14 +18,13 @@ def InitialiseStorageSystem():
         
 # This method will get the file and read in information from
 # the flat file containing the other alarms and create an
-# array of Alam class objects. (Call the INITialiseStorageSystem() methoed to get
-# the path of the log file.)
-def ReadAlarms():
+# array of Alam class objects.
+def ReadAlarms(path_to_file):
     return 0
 
 #This method will send the email to the given contact for the alarm.
 #the contact will be apart of an alarm class.
-def Ring():
+def Ring(alarm1):
     return 0
 
 
