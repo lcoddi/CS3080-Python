@@ -8,6 +8,9 @@ from Methods import *
 from tkinter import *
 from tkinter import messagebox
 
+#fileLoc = InitialiseStorageSystem()
+#global_Alarms = ReadAlarms(fileLoc)
+
 
 def info_ButtonClick():
     popup = Tk()
@@ -20,12 +23,17 @@ def info_ButtonClick():
     label1.pack(fill="both", pady=20, padx=20)
     entry2 = Entry (popup)
     entry2.pack(fill="both", pady=20, padx=20) 
-    B1 = Button(popup, text="Continue", command = lambda:(messagebox.showinfo("Value from box", entry1.get())))
+    B1 = Button(popup, text="Continue", command = lambda:(messagebox.showinfo("Creates the new Alarm obj", entry1.get())))
+    #writes the alram to the file
     B1.pack(fill="both", pady=20, padx=20)
     popup.mainloop()
 
-def ButtonClick():
-    messagebox.showinfo("Already Created Alarms","This will show all previous alarm info")
+def ButtonClick(Alarms):
+    output_str = ""
+    for x in Alarms:
+        output_str += x.WriteValue()
+        output_str += "\n"
+    messagebox.showinfo("Already Created Alarms",output_str)
     
 
 form = Tk()
@@ -36,7 +44,7 @@ canvas1 = Canvas(form, width = 400, height = 400)
 label1 = Label(form, text="Alarm System")
 canvas1.create_window(200, 15, window= label1)
 
-b = Button(form, text="View Old Alarms", command=lambda:ButtonClick())
+b = Button(form, text="View Alarms", command=lambda:ButtonClick())
 canvas1.create_window(70, 75, window = b)
 
 b1 = Button(form, text="Create New Alarm", command=lambda:info_ButtonClick())
