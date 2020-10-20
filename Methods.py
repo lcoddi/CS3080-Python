@@ -24,7 +24,7 @@ def ReadAlarms(path_to_file):
 
 #This method will send the email to the given contact for the alarm.
 #the contact will be apart of an alarm class.
-def Ring(alarm1):
+def SendEmail(alarm1):
     return 0
 
 
