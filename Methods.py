@@ -8,7 +8,7 @@ import datetime # for getting current time
 def InitialiseStorageSystem():
     fileName = '\Sneaky_Sneks_Alarm_Program_File.txt'
     path = os.getcwd()
-    fullLogPath = path+'\\'+filename
+    fullLogPath = path+'\\'+fileName
     try:
         file = open(fullLogPath, "a")
     except:
