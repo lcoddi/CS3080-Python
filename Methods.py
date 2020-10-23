@@ -35,6 +35,8 @@ def SendEmail(alarm1):
 # Return null if it is in the past. This will need to be run in the background
 def IsTime(alarmTime):
     currentTime = datetime.datetime.now()
+    # May need to convert time to format (mm-dd-YYYY/hh:mm) like so:
+    # currentTime = currentTime.strftime("%m-%d-%Y/%H:%M")
     if (currentTime >= alarmTime):
         return True
     else:
