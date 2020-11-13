@@ -22,8 +22,25 @@ def InitialiseStorageSystem():
 # array of Alam class objects.
 # The Alarm class WriteValue() function returns  a string of the class variables comma delimited as follows:
 # Name,Date,ReminderTime,Description,email
+#
+# The file to be read from should look something like this,
+# depending on how the Alarms() method is written:
+# Wake Up,10-24-2020/08:00,time to do homework,rlong2@uccs.edu
+# Store,10-25-2020/13:00,halloween shopping,foo@bar.com
 def ReadAlarms(path_to_file):
-    return 0
+    
+    global alarms
+    alarms = {}
+    with open(path + "\\" + fileName, "r") as filestream:
+        for line in filestream:
+            currentLine = line.split(",")
+            name = currentLine[0]
+            time = currentLine[1]
+            description = currentLine[2]
+            email = currentLine[3]
+            alarms[name] = Alarm(name, time, description, email)
+
+            print(alarms[name])
 
 #This method will send the email to the given contact for the alarm.
 #the contact will be apart of an alarm class.
