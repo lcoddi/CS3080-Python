@@ -48,6 +48,9 @@ def ReadAlarms(path_to_file):
 
 #This method will send the email to the given contact for the alarm.
 #the contact will be a part of an alarm class.
+# The token.json and credentials.json authenticate access to cs3080python@gmail.com,
+# so any sent email comes from that address.
+# Syntax: ezgmail.send(recipient_email, "Subject Line", "Email body")
 def SendEmail(alarm1):
     test_contact = "cs3080python@gmail.com"
     now = datetime.now()
