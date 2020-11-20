@@ -27,6 +27,7 @@ def InitialiseStorageSystem():
 # depending on how the Alarms() method is written:
 # Wake Up,10-24-2020/08:00,time to do homework,rlong2@uccs.edu
 # Store,10-25-2020/13:00,halloween shopping,foo@bar.com
+
 def ReadAlarms(path_to_file):
     
     global alarms
@@ -35,9 +36,11 @@ def ReadAlarms(path_to_file):
         for line in filestream:
             currentLine = line.split(",")
             name = currentLine[0]
-            time = currentLine[1]
-            description = currentLine[2]
-            email = currentLine[3]
+            date = currentLine[1]
+            reminder = currentLine[2]
+            description = currentLine[3]
+            contact = currentLine[4]
+            
             alarms[name] = Alarm(name, time, description, email)
 
             print(alarms[name])
