@@ -18,7 +18,7 @@ SendToFile(FileLoc) - Writes the WriteValue() method’s value to the storage fi
 
 class Alarm:
 
-    def __init__(self, alarm_name="", alarm_date="", alarm_reminder="", alarm_description="", alarm_contact=""):
+    def __init__(self, alarm_name="default_name", alarm_date="12:00", alarm_reminder="13:00", alarm_description="default_description", alarm_contact="default_contact"):
         self.__alarm_name = alarm_name
         self.__alarm_date = alarm_date
         self.__alarm_reminder = alarm_reminder
