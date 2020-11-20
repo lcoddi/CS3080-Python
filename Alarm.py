@@ -24,6 +24,10 @@ class Alarm:
         self.alarm_reminder = alarm_reminder
         self.alarm_description = alarm_description
         self.alarm_contact = alarm_contact
+
+    def __str__(self):
+        return "Name: " + self.alarm_name + "\nDate: " + self.alarm_date + "\nReminder Time: " + self.alarm_reminder + "\nDescription: " + self.alarm_description + "\nEmail: " + self.alarm_contact
+
 # Getters
 
     def get_alarm_name(self):
