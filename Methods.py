@@ -1,6 +1,10 @@
 "Add methods for the CS3080 Python final Project here."
 import os
 import datetime # for getting current time
+import ezgmail  # for sending email, may need to pip install ezgmail
+from datetime import datetime
+
+
 
 # This method will set up the file system. If the file exists
 # then it will return the path; if the file doesn’t exist it
@@ -46,8 +50,13 @@ def ReadAlarms(path_to_file):
             print(alarms[name])
 
 #This method will send the email to the given contact for the alarm.
-#the contact will be apart of an alarm class.
+#the contact will be a part of an alarm class.
 def SendEmail(alarm1):
+    test_contact = "cs3080python@gmail.com"
+    now = datetime.now()
+    
+    ezgmail.send(test_contact, "Test Subject", "Hello world! Current time is " + str(now))
+    
     return 0
 
 
