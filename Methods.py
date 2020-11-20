@@ -2,9 +2,6 @@
 import os
 import datetime # for getting current time
 import ezgmail  # for sending email, may need to pip install ezgmail
-from datetime import datetime
-
-
 
 # This method will set up the file system. If the file exists
 # then it will return the path; if the file doesn’t exist it
@@ -56,9 +53,7 @@ def SendEmail(alarm1):
     now = datetime.now()
     
     ezgmail.send(test_contact, "Test Subject", "Hello world! Current time is " + str(now))
-    
     return 0
-
 
 # Returns true if the time for the alarm has arrived and false if not.
 # Return null if it is in the past. This will need to be run in the background
