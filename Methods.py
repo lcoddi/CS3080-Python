@@ -52,10 +52,24 @@ def ReadAlarms(path_to_file):
 # so any sent email comes from that address.
 # Syntax: ezgmail.send(recipient_email, "Subject Line", "Email body")
 def SendEmail(alarm1):
-    test_contact = "cs3080python@gmail.com"
-    now = datetime.now()
+
+    # create variables for sending through ezgmail
+    email_address = alarms[alarm1].get_alarm_contact()
+    name = alarms[alarm1].get_alarm_name()
+    description = alarms[alarm1].get_alarm_description()
+    reminder = alarms[alarm1].get_alarm_reminder()
+
+    # email body
+    body = '''
+ This is your scheduled reminder that the following task is due %s
+
+ Alarm Title: %s
+ Alarm Description: %s
+  ''' % (reminder, name, description)
     
-    ezgmail.send(test_contact, "Test Subject", "Hello world! Current time is " + str(now))
+    # Send the email
+    ezgmail.send(email_address, name, body)
+    
     return 0
 
 # Returns true if the time for the alarm has arrived and false if not.
