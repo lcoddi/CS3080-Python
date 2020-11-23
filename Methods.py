@@ -1,6 +1,6 @@
 "Add methods for the CS3080 Python final Project here."
 import os
-import datetime # for getting current time
+from datetime import datetime # for getting current time
 import ezgmail  # for sending email, may need to pip install ezgmail
 
 # This method will set up the file system. If the file exists
