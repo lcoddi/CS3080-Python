@@ -31,19 +31,19 @@ class Alarm:
 # Getters
 
     def get_alarm_name(self):
-        return self.__alarm_name
+        return self.alarm_name
 
     def get_alarm_date(self):
-        return self.__alarm_date
+        return self.alarm_date
 
     def get_alarm_reminder(self):
-        return self.__alarm_reminder
+        return self.alarm_reminder
 
     def get_alarm_description(self):
-        return self.__alarm_description
+        return self.alarm_description
 
     def get_alarm_contact(self):
-        return self.__alarm_contact
+        return self.alarm_contact
 # Setters
 
     def set_alarm_name(self, name):
@@ -61,10 +61,16 @@ class Alarm:
     def set_alarm_contact(self, contact):
         self.__alarm_contact = contact
 
+    """
     def write_to_file(self, name, date, reminder, description, contact):
         f = open("Alarms.txt", "a")
         f.write(name + "," + date + "," + reminder + "," + description + "," + contact + "\n")
         f.close()
+        """
+    def write_to_file(self, FileLoc):
+        f = open(FileLoc, "a")
+        f.write(self.alarm_name + "," + self.alarm_date + "," + self.alarm_reminder + "," + self.alarm_description + "," + self.alarm_contact + "\n")
+        f.close()    
 
 '''
 a1 = Alarm()
