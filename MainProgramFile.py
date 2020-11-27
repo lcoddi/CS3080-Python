@@ -1,5 +1,10 @@
 "Main program file. This will use the methods.py file, and the Alarm.py file and will be the main run file for this program. This will also contain the GUI."
-"Main program file. This will use the methods.py file, and the Alarm.py file and will be the main run file for this program. This will also contain the GUI."
+
+# TODO:
+# GUI: Describe/Show how 'Alarm Time' should be entered
+# GUI: Describe/Show how 'Reminder Time' should be entered, what it is
+# GUI: Put extra whiteline in between multiple alarms
+
 from Alarm import *
 from Methods import *
 
