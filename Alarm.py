@@ -47,19 +47,19 @@ class Alarm:
 # Setters
 
     def set_alarm_name(self, name):
-        self.__alarm_name = name
+        self.alarm_name = name
 
     def set_alarm_date(self, date):
-        self.__alarm_date = date
+        self.alarm_date = date
 
     def set_alarm_reminder(self, reminder):
-        self.__alarm_reminder = reminder
+        self.alarm_reminder = reminder
 
     def set_alarm_description(self, description):
-        self.__alarm_description = description
+        self.alarm_description = description
 
     def set_alarm_contact(self, contact):
-        self.__alarm_contact = contact
+        self.alarm_contact = contact
 
     """
     def write_to_file(self, name, date, reminder, description, contact):
