@@ -35,14 +35,14 @@ def ReadAlarms(path_to_file):
     alarms = []
     with open(path_to_file, "r") as filestream:
         for line in filestream:
-            currentLine = line.split(",")
-            name = currentLine[0]
-            date = currentLine[1]
-            reminder = currentLine[2]
-            description = currentLine[3]
-            contact = currentLine[4]
-            
-            alarms.append(Alarm(name, date, reminder, description, contact))
+            if(len(line) > 1):
+                currentLine = line.split(",")
+                name = currentLine[0]
+                date = currentLine[1]
+                reminder = currentLine[2]
+                description = currentLine[3]
+                contact = currentLine[4]
+                alarms.append(Alarm(name, date, reminder, description, contact))
 
            # print(alarms[name])
     return alarms
