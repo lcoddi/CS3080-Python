@@ -1,4 +1,6 @@
 """
+Alarm Class
+
 Private fields:
 Name - gives the alarm name
 Date - used for when the alarm is created format: (mm-dd-yyyy/hh:mm). Default is to use the current time + 1hr.
