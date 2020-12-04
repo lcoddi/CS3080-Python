@@ -1,8 +1,12 @@
-"Add methods for the CS3080 Python final Project here."
+"""
+Methods file
+This file contains methods for use in the main program
+"""
 import os
 from datetime import datetime # for getting current time
 import ezgmail  # for sending email, may need to pip install ezgmail
 from Alarm import *
+
 # This method will set up the file system. If the file exists
 # then it will return the path; if the file doesn’t exist it
 # will create the file and return the log path. 
@@ -52,28 +56,6 @@ def ReadAlarms(path_to_file):
 # The token.json and credentials.json authenticate access to cs3080python@gmail.com,
 # so any sent email comes from that address.
 # Syntax: ezgmail.send(recipient_email, "Subject Line", "Email body")
-"""
-def SendEmail(alarm1):
-
-    # create variables for sending through ezgmail
-    email_address = alarms[alarm1].get_alarm_contact()
-    name = alarms[alarm1].get_alarm_name()
-    description = alarms[alarm1].get_alarm_description()
-    reminder = alarms[alarm1].get_alarm_reminder()
-
-    # email body
-    body = '''
- This is your scheduled reminder that the following task is due %s
-
- Alarm Title: %s
- Alarm Description: %s
-  ''' % (reminder, name, description)
-    
-    # Send the email
-    ezgmail.send(email_address, name, body)
-    
-    return 0
-"""
 def SendEmail(alarm):
 
     # create variables for sending through ezgmail
@@ -94,16 +76,15 @@ def SendEmail(alarm):
     ezgmail.send(email_address, name, body)
     
     return 0
+
+#check if the alarm time has come up
 # Returns true if the time for the alarm has arrived and false if not.
 # Return null if it is in the past. This will need to be run in the background
 def IsTime(alarmTime):
     currentTime = datetime.now()
-    # May need to convert time to format (mm-dd-YYYY/hh:mm) like so:
     currentTime = currentTime.strftime("%m-%d-%Y/%H:%M")
     if (currentTime == alarmTime):
         return True
-    #elif(currentTime > alarmTime):
-     #   print("Alarm is in the past...")
     else:
         return False
 
