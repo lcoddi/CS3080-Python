@@ -1,23 +1,29 @@
-"Main program file. This will use the methods.py file, and the Alarm.py file and will be the main run file for this program. This will also contain the GUI."
-"Main program file. This will use the methods.py file, and the Alarm.py file and will be the main run file for this program. This will also contain the GUI."
+"""
+Main program file. 
+This will use the methods.py file, and the Alarm.py file and will be the main run file for this program. This will also contain the GUI.
+"""
+
 from Alarm import *
 from Methods import *
 
 
-    # for Python3
+# for Python3
 from tkinter import *
 from tkinter import messagebox
 import os
 
+#create the file system and read existing alarms
 fileLoc = InitialiseStorageSystem()
 global_Alarms = ReadAlarms(fileLoc)
 
+#function to create a new alarm object
 def createAlarm(name, date, reminder, desc, contact, popup):
     Alarm(name, date, reminder,desc,contact).write_to_file(fileLoc)
     global global_Alarms 
     global_Alarms = ReadAlarms(fileLoc)
     popup.destroy()
 
+#GUI to create a new alarm object
 def info_ButtonClick():
     popup = Tk()
     popup.wm_title("Enter Alarm Info")
@@ -49,6 +55,7 @@ def info_ButtonClick():
     B1.pack(fill="both", pady=20, padx=20)
     popup.mainloop()
 
+#update the file and the alarm object and list
 def Update(index, name, date, reminder, desc, contact, popup):
     global global_Alarms
     global fileLoc
@@ -65,6 +72,7 @@ def Update(index, name, date, reminder, desc, contact, popup):
         x.write_to_file(fileLoc)
     popup.destroy()
 
+#function to create a GUI to let the user update an existing alarm
 def editAlarm(x, index):
     popup = Tk()
     popup.wm_title("Edit Alarm")
@@ -103,6 +111,7 @@ def editAlarm(x, index):
     B1.pack(fill="both", pady=20, padx=20)
     popup.mainloop()
 
+#show existing alarms and give the option to edit
 def ButtonClick():
     global global_Alarms
     index = 0
@@ -112,13 +121,14 @@ def ButtonClick():
     for x in global_Alarms:
         label = Label(popup, text=x.__str__())
         label.pack(fill="both", pady=5, padx=5)
-        B1 = Button(popup, text=x.get_alarm_name(), command = lambda:editAlarm(x,index))
+        B1 = Button(popup, text="Edit " + x.get_alarm_name(), command = lambda:editAlarm(x,index))
         B1.pack(fill="both", pady=20, padx=20)
         index +=1
     if(index == 0):
         label = Label(popup, text="No Alarms Created!")
         label.pack(fill="both", pady=5, padx=5)
 
+#create and open the main GUI screen
 form = Tk()
 (form.winfo_toplevel()).title("SNEAKY SNEKS ALARM SYSTEM")
 
@@ -135,17 +145,17 @@ canvas1.create_window(300, 75, window = b1)
 
 canvas1.pack()
 
-def SEND():
-   # print("Checking time...")
+#check the time and see if it matches any alarms 
+def check():
     for x in global_Alarms:
         if(IsTime(x.get_alarm_date())):
             print("Sending email...")
             SendEmail(x)
             messagebox.showinfo("!!ALARM!!", x.__str__())
+    #recursion
+    form.after(3000, check)
 
-    form.after(3000, SEND)
-
-
-form.after(3000, SEND)
+#call the method and start the GUI loop
+form.after(3000, check)
 form.mainloop()
 
