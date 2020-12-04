@@ -1,5 +1,3 @@
-import re
-"Create Alarm Class here for the CS3080 python final project."
 """
 Private fields:
 Name - gives the alarm name
@@ -15,9 +13,11 @@ WriteValue() - returns  a string of the class variables comma delimited as follo
 SendToFile(FileLoc) - Writes the WriteValue() method’s value to the storage file (FileLoc).
 """
 
+import re
 
 class Alarm:
 
+#constructor
     def __init__(self, alarm_name="default_name", alarm_date="12:00", alarm_reminder="13:00", alarm_description="default_description", alarm_contact="default_contact"):
         self.alarm_name = alarm_name
         self.alarm_date = alarm_date
@@ -25,11 +25,11 @@ class Alarm:
         self.alarm_description = alarm_description
         self.alarm_contact = alarm_contact
 
+ # return the string form of the class
     def __str__(self):
         return "Name: " + self.alarm_name + "\nDate: " + self.alarm_date + "\nReminder Time: " + self.alarm_reminder + "\nDescription: " + self.alarm_description + "\nEmail: " + self.alarm_contact
 
 # Getters
-
     def get_alarm_name(self):
         return self.alarm_name
 
@@ -44,8 +44,8 @@ class Alarm:
 
     def get_alarm_contact(self):
         return self.alarm_contact
-# Setters
 
+# Setters
     def set_alarm_name(self, name):
         self.alarm_name = name
 
@@ -61,18 +61,15 @@ class Alarm:
     def set_alarm_contact(self, contact):
         self.alarm_contact = contact
 
-    """
-    def write_to_file(self, name, date, reminder, description, contact):
-        f = open("Alarms.txt", "a")
-        f.write(name + "," + date + "," + reminder + "," + description + "," + contact + "\n")
-        f.close()
-        """
+#write the class to a file
     def write_to_file(self, FileLoc):
         f = open(FileLoc, "a")
         f.write(self.alarm_name + "," + self.alarm_date + "," + self.alarm_reminder + "," + self.alarm_description + "," + self.alarm_contact + "\n")
         f.close()    
 
 '''
+Example of how to use:
+
 a1 = Alarm()
 
 a1.set_alarm_name(input('enter Alarm name: '))
